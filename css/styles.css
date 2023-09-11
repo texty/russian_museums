@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,100;1,300&display=swap');
+
+@font-face {
+    font-family: "Proxima Nova";
+    src: url('fonts/proxima-nova-regular.eot');
+    src: url('fonts/proxima-nova-regular.eot') format('embedded-opentype'),
+         url('fonts/proxima-nova-regular.woff2') format('woff2'),
+         url('fonts/proxima-nova-regular.woff') format('woff'),
+         url('fonts/proxima-nova-regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: "Proxima Nova";
+    font-weight: bold;
+    src: url('fonts/proxima-nova-bold.eot');
+    src: url('fonts/proxima-nova-bold.eot') format('embedded-opentype'),
+         url('fonts/proxima-nova-bold.woff2') format('woff2'),
+         url('fonts/proxima-nova-bold.woff') format('woff'),
+         url('fonts/proxima-nova-bold.ttf') format('truetype');
+  }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Proxima Nova', sans-serif;
+  background-color: #D9D2CE;
+}
+
+h1#title {
+    text-align: center;
+    font-size: 66px;
+    font-family: Georgia, serif;
+}
+
+h3#subtitle {
+    text-align: center;
+    font-size: 40px;
+    font-family: Georgia, serif;
+}
+
+main > h2 {
+    font-size: calc(18px + 0.5vw);
+    font-family: Georgia, serif;
+    color: #7F200C;
+    max-width: 600px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+main > p, 
+main > h2, 
+main > h3,  
+main > ul >li {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  line-height: 1.4;
+  
+}
+
+.lead {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: calc(14px + 0.5vw);
+    color: #7F200C;
+    font-weight: bold;
+    max-width: 800px;
+}
+
+main > p, 
+main li {
+    font-size: calc(14px + 0.5vw);
+    margin-bottom: 20px;
+   
+}
+
+img.medium {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.scale {
+    display: flex; 
+    max-width:600px; 
+    margin: auto;
+    align-items: center;
+}
+
+
+.scale img {
+    max-width: 100px; 
+    margin-left: -110px;
+    margin-right: 10px;
+}
+
+.scale p {
+    font-style: italic;
+    color: #7F200C;
+    font-family: 'Georgia', serif;
+}
+
+@media(max-width: 900px){
+    .scale img {
+        margin-left: 10px;
+    }
+}
+
+
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media(max-width: 800px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+}
+
+
+
