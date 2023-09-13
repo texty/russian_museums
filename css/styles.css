@@ -47,6 +47,18 @@ body {
   background-color: #D9D2CE;
 }
 
+#cover-wrapper {
+    max-height: 50vh;
+    width: 100%;
+    overflow:hidden;
+}
+
+.video-cover {
+    display: block;
+    width:100%;
+    margin: auto;
+}
+
 h1#title {
     text-align: center;
     font-size: calc(45px + 2vw);
@@ -118,6 +130,36 @@ main li {
     color: #7F200C;
 }
 
+.styled-quote-wrapper {
+    min-height: 300px; 
+    display: flex;  
+    background-size: cover; 
+    background-position: 0%; 
+    padding: 50px 0;
+}
+
+@media(max-width:800px){
+    .styled-quote-wrapper {
+        background-position: 50%; 
+    }
+}
+
+.styled-quote {
+    max-width: 600px; 
+    font-family: 'Georgia', serif; 
+    font-style:italic;
+     margin: auto;
+     line-height: 1.4;
+}
+
+.qoute-source {
+    font-weight: bold; 
+    text-align: right; 
+    max-width: 700px;
+    margin: 30px auto 0; 
+}
+
+
 main img {
     max-width: 100%;
 }
@@ -172,38 +214,30 @@ img.medium {
     }
 }
 
-.video-cover {
+
+
+.bubble-desktop {
     display: block;
-    width:100%;
-    margin: auto;
 }
 
-#cover-wrapper {
-    max-height: 50vh;
-    width: 100%;
-    overflow:hidden;
+.bubble-mobile {
+    display: none;
+}
+
+@media(max-width: 500px){
+    .bubble-desktop {
+        display: none;
+    }
+    
+    .bubble-mobile {
+        display: block;
+    }
 }
 
 
 
 
 
-
-/* * {box-sizing: border-box;} */
-
-/* .img-magnifier-container {
-  position: relative;
-}
-
-.img-magnifier-glass {
-  position: absolute;
-  border: 3px solid #7F200C;
-  border-radius: 50%;
-  cursor: none;
-  background-color: #d9d2cd;
-  width: 200px;
-  height: 200px;
-} */
 
 .magnify-lens {
     width: 100px;
