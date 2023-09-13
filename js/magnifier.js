@@ -22,8 +22,8 @@ function magnify(imgID, zoom) {
     img.addEventListener("mousemove", moveMagnifier);
   
     /*and also for touch screens:*/
-    glass.addEventListener("touchmove", moveMagnifier);
-    img.addEventListener("touchmove", moveMagnifier);
+    glass.addEventListener("touchstart", moveMagnifier);
+    img.addEventListener("touchstart", moveMagnifier);
     function moveMagnifier(e) {
       var pos, x, y;
       /* Prevent any other actions that may occur when moving over the image */
