@@ -52,6 +52,12 @@
   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
   <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
 
+  <link rel="stylesheet" href="libs/magnify.css">
+    <!-- <script src="//code.jquery.com/jquery-2.2.4.min.js"></script> -->
+    <script src="libs/magnify.js"></script>
+<!-- Optional mobile plugin (uncomment the line below to enable): -->
+<script src="libs/magnify-mobile.js"></script>
+
 
  
 
@@ -162,9 +168,12 @@
     <p>На зображенні нижче представлено 14 з 110 тисяч вивезених експонатів. Більшість знахідок – частини кераміки, знарядь праці тощо. Але є й чимало коштовностей із золота, срібла і дорогоцінних каменів.</p> 
 </div>  
 
-<div class="img-magnifier-container">
+<!-- <div class="img-magnifier-container">
     <img id="myimage" style='margin: 30px 0 100px 0;' src="grid_2940_1800.png" width="100%" alt="Girl">
-  </div>
+  </div> -->
+
+  <img src="grid_2940_1800.png" class="zoom" data-magnify-src="grid_2940_1800.png">
+
 
   <div class="accordion">
     <input type="checkbox" id="section1">
@@ -1083,12 +1092,16 @@
 
 <script src="js/scrollama_section.js"></script>
 <script src="js/horizontal_scroll.js"></script>
-<script src="js/magnifier.js"></script>
+<!-- <script src="js/magnifier.js"></script> -->
 
 
     <script>
+
+$(document).ready(function() {
+  $('.zoom').magnify();
+});
 /* Execute the magnify function: */
-magnify("myimage", 3);
+//magnify("myimage", 3);
 /* Specify the id of the image, and the strength of the magnifier glass: */
 </script>
 

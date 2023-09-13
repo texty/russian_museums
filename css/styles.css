@@ -191,7 +191,7 @@ img.medium {
 
 /* * {box-sizing: border-box;} */
 
-.img-magnifier-container {
+/* .img-magnifier-container {
   position: relative;
 }
 
@@ -201,10 +201,16 @@ img.medium {
   border-radius: 50%;
   cursor: none;
   background-color: #d9d2cd;
-  /*Set the size of the magnifier glass:*/
   width: 200px;
   height: 200px;
-}
+} */
+
+.magnify-lens {
+    width: 100px;
+    height: 100px;
+    background-color: #d9d2cd;
+    border: 3px solid #7F200C;
+  }
 
 
 
