@@ -213,6 +213,7 @@ main img {
 img.medium {
     max-width: 1000px;
     margin: 30px auto;
+    width: 100%;
 }
 
 .scale {
