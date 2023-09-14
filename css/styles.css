@@ -21,6 +21,56 @@
     font-display: swap;
   }
 
+
+  @font-face {
+    font-family: "Georgia";
+    font-weight: normal;
+    src: url('fonts/GEORGIA.TTF');
+    src: url('fonts/GEORGIA.TTF') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Georgia-Italic";
+    font-weight: normal;
+    font-style: italic;
+    src: url('fonts/GEORGIAI.TTF');
+    src: url('fonts/GEORGIAI.TTF') format('truetype');
+    font-display: swap;
+  }
+  
+  
+
+  @font-face {
+    font-family: "Georgia-Bold";
+    font-weight: bold;
+    src: url('fonts/GEORGIAB.TTF');
+    src: url('fonts/GEORGIAB.TTF') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Georgia-Bold-Italic";
+    font-weight: bold;
+    font-style: italic;
+    src: url('fonts/GEORGIAZ.TTF');
+    src: url('fonts/GEORGIAZ.TTF') format('truetype');
+    font-display: swap;
+  }
+
+  
+
+  @font-face {
+    font-family: "Georgia-Bold-Italic";
+    font-weight: bold;
+    font-style: italic;
+    src: url('fonts/GEORGIA.TTF');
+    src: url('fonts/GEORGIA.TTF') format('truetype');
+    font-display: swap;
+  }
+
+  
+
 body {
   margin: 0;
   overflow-x: hidden;
@@ -69,7 +119,7 @@ main a:hover {
 
 main > h2 {
     font-size: calc(18px + 0.5vw);
-    font-family: "Georgia", serif;
+    font-family: "Georgia-Bold", serif;
     color: #7F200C;
     max-width: 600px;
     text-transform: uppercase;
@@ -154,9 +204,11 @@ main li {
 
 main img {
     max-width: 100%;
+    
 }
 
 img.medium {
+    display: block;
     max-width: 1000px;
     margin: 30px auto;
 }

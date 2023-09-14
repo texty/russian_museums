@@ -32,12 +32,12 @@
 	.st26{fill:#906263;}
 	.st27{fill:none;}
 	.st28{font-family:'Georgia-Italic';}
-	.st29{font-size:27px;}
+	.st29{font-size:27px; font-family:'Georgia-Italic';}
 	.st30{fill:#7E485A;}
-	.st31{font-family:'Georgia-BoldItalic';}
+	.st31{font-family:'Georgia-Bold-Italic';}
 	.st32{fill:#7E4848;}
 	.st33{fill:#402B2E;}
-	.st34{font-family:'ProximaNova-Regular';}
+	.st34{font-family:'ProximaNova';}
 	.st35{font-size:16px;}
 	.st36{clip-path:url(#SVGID_00000036956585174373730900000013155210367985441188_);}
 	.st37{clip-path:url(#SVGID_00000127040334308534723570000008178439075707247800_);}
@@ -6823,12 +6823,9 @@
 	<circle class="st26" cx="1257.6" cy="1516.4" r="5.7"/>
 </g>
 <rect x="341.4" y="122.4" class="st27" width="910" height="85.2"/>
-<text transform="matrix(1 0 0 1 378.7459 142.7501)" class="st28 st29">Топ-10 українських локацій за кількістю знахідок в </text>
-<text transform="matrix(1 0 0 1 1044.5459 142.7501)" class="st30 st31 st29">Ермітажі</text>
-<text transform="matrix(1 0 0 1 1199.6459 142.7501)" class="st32 st28 st29"> </text>
-<text transform="matrix(1 0 0 1 1206.1459 142.7501)" class="st28 st29">і </text>
+<text transform="matrix(1 0 0 1 378.7459 142.7501)" class="st28 st29">Топ-10 українських локацій за кількістю знахідок в <span fill='red'>Ермітажі<span> i</text>
 <text transform="matrix(1 0 0 1 453.5459 175.1501)" class="st28 st29">топ-12 в </text>
-<text transform="matrix(1 0 0 1 571.4459 175.1501)" class="st24 st31 st29">Державному історичному музеї Росії</text>
+<text transform="matrix(1 0 0 1 571.4459 175.1501)" class="st24 st29">Державному історичному музеї Росії</text>
 <rect x="41.9" y="1734.9" class="st27" width="1002.9" height="26.5"/>
 <text transform="matrix(1 0 0 1 41.8509 1743.5294)" class="st33 st34 st35">Дані: онлайн-колекція Державного Ермітажу (Санкт-Петербург, Росія) та електронний каталог Державного Історичного музею (Москва, Росія)</text>
 <g>
@@ -7061,5 +7058,5 @@
 	<text transform="matrix(1 0 0 1 1309.3901 431.6684)" class="st44 st43">XIII-XIV ст</text>
 </g>
 <rect x="327.1" y="42.8" class="st27" width="945.2" height="62.8"/>
-<text transform="matrix(1 0 0 1 415.6354 75.3379)" class="st45 st42 st46">ЗВІДКИ НАЙБІЛЬШЕ ВИВЕЗЛИ</text>
+<text transform="matrix(1 0 0 1 415.6354 75.3379)" class="st45 st42 st46">ЗВІДКИ НАЙБІЛЬШЕ ЗНАХІДОК</text>
 </svg>
