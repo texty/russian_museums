@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Украдені цінності</title>
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="fb:app_id" content="329250623807149"/>
+  <meta property="og:site_name" content="ТЕКСТИ.ORG.UA"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title"
+      content="Як Кремль програв війну за Twitter"/>
+  <meta property="og:image" content="https://texty.org.ua/media/images/Znimok_ekrana_2022-12-14_o_13.15.59.original.png"/>
+  <meta property="og:description"
+      content="ТЕКСТИ проаналізували майже 60 млн твітів, щоб зрозуміти, як вели паралельну українсько-російську війну в одній з ключових соцмереж світу."/>
+  <meta property="og:url" content="https://texty.org.ua/d/2022/twitter/"/>
+
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:site" content="@textyorgua"/>
+  <meta property="twitter:account_id" content="49572937"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:url" content="https://texty.org.ua/d/2022/twitter/">
+  <meta name="twitter:title"
+      content="Як Кремль програв війну за Twitter"/>
+  <meta name="twitter:description"
+      content="ТЕКСТИ проаналізували майже 60 млн твітів, щоб зрозуміти, як вели паралельну українсько-російську війну в одній з ключових соцмереж світу"/>
+  <meta name="twitter:image:width" content="1200"/>
+  <meta name="twitter:image:height" content="630"/>
+
+
+  <!-- Other Meta Tags -->
+  <meta name="title" content="Як Кремль програв війну за Twitter">
+  <meta name="description" content="ТЕКСТИ проаналізували майже 60 млн твітів, щоб зрозуміти, як вели паралельну українсько-російську війну в одній з ключових соцмереж світу">
+
+  <script src="enter-view.js"></script>
+  <script defer="defer" src="./static/js/main.d9e75017.js"></script>
+  <link href="./static/css/main.e762344d.css" rel="stylesheet">
+
+  <!-- <link rel="stylesheet" href="https://codepen.io/GreenSock/pen/7ba936b34824fefdccfe2c6d9f0b740b.css"/> -->
+  <script src="libs/d3v5.min.js"></script>
+  <script src="libs/jquery-1.11.1.js"></script>
+  <script src="libs/scrollama.min.js"></script>
+
+
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+  <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
+
+<!-- текст: https://docs.google.com/document/d/1wLDVPmJjIn3QVO8rUlg7ddA5R1F2yMZlM4yEHqRry4A/edit#heading=h.zft7ifi24kt9 -->
+</head>
+
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,100;1,300&display=swap');
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+
+    .lead {
+      width: 96%;
+      margin: auto;
+      max-width: 800px;
+      color: #7F200C;
+      font-weight: bold;
+
+    }
+
+    #scroll-wrapper {
+      overflow-x: hidden;
+    }
+
+    .horizontal {
+      padding: 0 20px 120px;
+      box-sizing: border-box;
+      /* height: 100vh; */
+    }
+
+    .horizontal__container {
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .horizontal__list {
+      display: grid;
+      grid-template-columns: repeat(18, 100vw);
+      /* padding-left: 100px; */
+    }
+
+    .horizontal__item {
+      /* width: 100%; */
+      /* margin-left: 30px; */
+      box-sizing: border-box;
+    }
+
+    .horizontal__item img.desktop-only {
+      width: 85vw;
+      margin: auto;
+    }
+
+    .horizontal__item img.mobile-only {
+      height: 90vh;
+    }
+
+    .horizontal__item h3 {
+      max-width: 800px;
+      font-size: 19px;
+      margin: 20px auto 10px;
+    }
+    .horizontal__item p {
+      max-width: 800px;
+      font-size: 16px;
+      margin: auto;
+    }
+
+    .horizontal__item:first-of-type {
+      margin-left: 0;
+    }
+
+    .vertical {
+      max-width: 800px;
+      margin: auto;
+    }
+
+
+
+
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    @media(max-width: 800px) {
+      .desktop-only {
+        display: none;
+      }
+
+      .mobile-only {
+        display: block;
+      }
+
+      .horizontal__list {
+        display: flex;
+      }
+
+      .horizontal__item {
+        display: flex;
+      }
+
+      .horizontal__item__description {
+        width: 90vw;
+        max-width:400px;
+        margin: auto 5vw;
+      }
+
+      .bordered {
+      border-right: 1px solid grey;
+    }
+
+
+    }
+
+   
+  </style>
+
+<style>
+
+
+  #scroll {
+      grid-column: 1/-1;
+      position: relative;
+      width: 100%;
+  }
+
+
+  .scroll__graphic {
+      grid-column: 1/-1;
+      width: 100%;
+      height: 100vh;
+      max-width: 1200px;
+      margin: auto;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      display: flex;
+  }
+
+  .scroll__graphic  img {
+      margin: auto;
+  }
+
+  @media(max-width: 800px){
+      .scroll__graphic {
+          display: block;
+          z-index: 100;
+      }
+  }
+
+ 
+  .scroll__text {
+     width: 90%;
+     max-width: 800px;
+      margin: 0 auto;
+      z-index: 100;
+      pointer-events: none;
+       z-index: 1;
+       -webkit-transform: translate3d(0,0,0);
+  }
+
+  .step {
+      padding: 15px;
+      height: max-content;
+      margin-bottom: 80vh;
+      
+  }
+
+  .step div {
+      pointer-events: all;
+      padding: 5px;
+      background-color: #D9D2CE;
+  }
+
+ 
+
+  .step p {
+      font-family: 'Proxima Nova', sans-serif;
+      margin: 0;
+      font-size: 25px;
+      line-height:1.4;
+
+  }
+
+  #background-image {
+      width: 100%;
+  }
+
+</style>
+<body>
+
+  <h1>Украдені скарби</h1>
+  <h3> У двох російських музеях ми виявили 110 тис. археологічних знахідок з України</h3>
+  
+  <div class="lead">
+   <p>В онлайн-колекціях Ермітажу та Державного історичного музею Росії ТЕКСТИ виявили 110 тис. археологічних знахідок, які в різні історичні періоди було вивезено з території сучасної України до Росії. Здебільшого їх вивозили до Росії до проголошення Незалежності, хоча є й винятки. </p>
+    <p>Ми не шукали мистецьких творів, ікон і зброї, бо їх походження вкрай важко ідентифікувати. Пограбування під час нинішньої війни також не досліджували. Додатково лише розглянули російські трюки з приховування найцінніших об'єктів. </p>
+    <p>Одразу зазначимо, що більшість артефактів не вражають — насамперед це частини давньої кераміки, знарядь праці тощо. Проте є і справжні неоціненні коштовності з золота та дорогоцінних каменів. </p>
+</div>
+
+
+
+
+<section class="story">
+  <section id='scroll'>
+      <div class='scroll__graphic sticky'>
+          <img id="background-image" src="https://texty.github.io/russian_museums/img/scroll/01.jpg"/>
+      </div>
+
+
+      <div class='scroll__text'>
+          <div class="step">
+              <div>
+                  <p>Тут вказано назву археологічної пам’ятки й колекції, інвентарний номер починається на КО, тобто Куль-Оба. А тепер зверніть увагу на описи інших предметів з такими самими літерами в інвентарному номері.</p>
+              </div>
+          </div>
+
+          <div class="step">
+              <div>
+                  <p>“Сосуд круглодонный” — це насправді всесвітньо відомий унікальний електровий кубок (електровий — тобто золотий) із зображеннями сцен життя скіфів. Розділи “Археологический памятник” та “Место находки” не заповнено, тому вони не відображаються.</p>
+              </div>
+          </div>
+
+          <div class="step">
+              <div>
+                  <p>Такі самі букви є також в інвентарних номерах золотих сережок на цьоу фото. Припускаємо, що цифри після букв можуть означати порядковий номер експоната, що походить з певної археологічної пам’ятки. Саме за цим кодом в інвентарному номері ми й відшукали експонати з Куль-Оби в колекції поміж інших.</p>
+              </div>
+          </div>
+
+          <div class="step">
+              <div>
+                  <p>Схожа закономірність повторюється і щодо інших експонатів та колекцій. Наприклад, золоті сережки, знайдені під час розкопок античного міста Німфей на мисі Ак-Бурун у Криму, поблизу сучасної Керчі. Про походження знахідки свідчить лише назва колекції та інвентарний номер. </p>
+              </div>
+          </div>
+
+          <div class="step">
+              <div>
+                  <p>Але тут про походження чітко свідчить хоча б назва колекції. А, наприклад, перстень з Перещепинського скарбу — надзвичайно багатої на коштовності знахідки біля села Мала Перещепина на Полтавщині — ідентифікувати вже важче. Тут не вказано ні місця знахідки, ні археологічної пам’ятки. Але ми також звернули увагу на інвентарний номер: 1930-187.
+                  </p>
+              </div>
+          </div>
+
+          <div class="step">
+              <div>
+                  <p>І знайшли у скачаному онлайн-каталозі експонат з таким самим номером (1930-187), проте з іншим фото, яке нижче. І з цього знімка вже зрозуміло, що це той самий перстень з Перещепинського скарбу з Полтавщини.</p>
+              </div>
+          </div>
+
+          <div class="step" style="margin-bottom:20vh;">
+          </div>
+     
+
+                 
+
+      
+      </div>
+  </section>
+</section>
+
+
+
+  <script>
+
+var Images = {
+          0: "https://texty.github.io/russian_museums/img/scroll/01.jpg",
+          1: "https://texty.github.io/russian_museums/img/scroll/02.jpg",
+          2: "https://texty.github.io/russian_museums/img/scroll/03.jpg",
+          3: "https://texty.github.io/russian_museums/img/scroll/04.jpg",
+          4: "https://texty.github.io/russian_museums/img/scroll/05.jpg",
+          5: "https://texty.github.io/russian_museums/img/scroll/06.jpg"
+      }
+      var container = document.querySelector('#scroll');
+      var graphic = document.querySelector('#scroll > .scroll__graphic');
+      var text = document.querySelector('#scroll > .scroll__text');
+      var step = document.querySelector('#scroll > .scroll__text > .step');
+      var scroller = scrollama();
+
+      function handleStepEnter(r) {
+        
+          $('#background-image').attr("src", Images[r.index])
+
+      }
+
+      function init() {
+          scroller.setup({
+              container: '#scroll',
+              graphic: '.scroll__graphic',
+              text: '.scroll__text',
+              step: '.scroll__text .step',
+              offset: 0.9,
+              debug: false,
+          })
+              .onStepEnter(handleStepEnter);
+
+      }
+      init();
+
+
+  </script>
+
+  <div class="wrapper">
+
+    <section class="vertical">
+      <h2>Vertical Section</h2>
+
+      <img class='desktop-only' src="top_desktop.svg" />
+      <img class="mobile-only" src="top_mobile.svg" />
+
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+
+    
+    </section>
+
+    <div id="scroll-wrapper">
+
+
+
+      <section class="horizontal">
+        <div class="horizontal__container content-container">
+
+          <div class="horizontal__scroll">
+            <div class="horizontal__list">
+              <div class="horizontal__item col-2 bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1763 рік. Лита могила</h3>
+                  <p>Наказом генерал-губернатора Новоросійського краю (південна частина України) Олексія Мельґунова по-грабіжницьки знівечено скіфський курган Червона (або Лита) Могила, датований VII ст. до н.е. На глибині 2 м під кам'яними плитами знайшли залізний меч з окутим золотом руків'ям і вкритими золотою платівкою дерев'яними піхвами, прикрашеними зображенням фантастичних тварин у передньоазійському стилі, золоту діадему, 17 масивних золотих пластин із зображенням орла з петлями на звороті, пластинку із зображеннями мавп і птахів, бронзову застібку з голівками левів на кінцях, 40 бронзових наконечників стріл та інше. Лита Могила — єдиний відомий нині скіфський царський курган того часу в Північному Причорномор'ї. Виявлені речі, які згодом назвали “мельгуновський скарб”, подарували імператриці Катерині II. Найцінніші з них згодом увійшли до колекцій російських музеїв, зокрема й до заснованого нею Ермітажу. Росіяни украли навіть топоніміку — курган і знайдений у ньому скарб нині часто називають Мельґунівським.</p>
+                </div>
+                
+              </div>
+              <div class="horizontal__item col-2">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby2.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby2.jpg">
+                <div class="horizontal__item__description desktop-only" >
+                <h3>1783-й, 1827-й, 1876-й, 2014-й і досі. Херсонес Таврійський</h3>
+                <p>Розкопки Херсонесу, античного міста-держави в Криму, почалися з ініціативи російського князя Григорія Потьомкіна в 1783 році — щоб перевірити відомості про хрещення там князя Володимира Великого. Руїни продовжили досліджувати в 1827 році, а систематично розкопувати взялися в 1876-му. Серед знахідок — залишки фортифікаційних споруд, житлових кварталів, водозабірних цистерн, різноманітних господарських будівель, церков, театрів, чимало поховань з багатими прикрасами. 
+                Найцінніше вивозили до Москви й Петербурга. Власне, так відбувалося і в радянські часи, і триває від 2014 року, з часу новітньої окупації Криму Росією. Окупанти здійснюють розкопки й забудову на території пам’ятки, внесеної до світової спадщини ЮНЕСКО.Херсонес, де у 987 році прийняв християнство київський князь Володимир, теперішня російська влада вважає сакральним місцем, оскільки ототожнює історію Русі з історією Росії.</p>
+                  </div>
+                 
+
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby3.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby3.jpg">
+                <div class="horizontal__item__description ">
+                  <h3>1783-й, 1827-й, 1876-й, 2014-й і досі. Херсонес Таврійський</h3>
+                  <p>Розкопки Херсонесу, античного міста-держави в Криму, почалися з ініціативи російського князя Григорія Потьомкіна в 1783 році — щоб перевірити відомості про хрещення там князя Володимира Великого. Руїни продовжили досліджувати в 1827 році, а систематично розкопувати взялися в 1876-му. Серед знахідок — залишки фортифікаційних споруд, житлових кварталів, водозабірних цистерн, різноманітних господарських будівель, церков, театрів, чимало поховань з багатими прикрасами. 
+                  Найцінніше вивозили до Москви й Петербурга. Власне, так відбувалося і в радянські часи, і триває від 2014 року, з часу новітньої окупації Криму Росією. Окупанти здійснюють розкопки й забудову на території пам’ятки, внесеної до світової спадщини ЮНЕСКО.Херсонес, де у 987 році прийняв християнство київський князь Володимир, теперішня російська влада вважає сакральним місцем, оскільки ототожнює історію Русі з історією Росії.</p>
+              
+                  </div>
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby4.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby4.jpg">
+                <div class="horizontal__item__description desktop-only">
+                  <h3>1830 рік. Куль-Оба</h3>
+                  <p>Одне з найбагатших скіфських поховань, відкрите випадково: російські військові в Криму шукали місця видобутку каменю для будівництва собі житла. І натрапили на курган, датований IV ст. до н.е., розташований поблизу Керчі. У гробниці було знайдено поховання царя, цариці і слуги. Найвідоміша знахідка з цього кургану — електровий кубок, тобто велика золота чаша, — зберігається в Державному Ермітажі, як і інші знахідки: зброя та численні золоті прикраси. Деякі знахідки перебувають у російському Історичному музеї. Частину скарбів було розграбовано під час розкопок.
+                  </p>
+                </div>
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby5.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby5.jpg">
+              
+                <div class="horizontal__item__description desktop-only">
+                  <h3>1830 рік. Куль-Оба</h3>
+                  <p>Одне з найбагатших скіфських поховань, відкрите випадково: російські військові в Криму шукали місця видобутку каменю для будівництва собі житла. І натрапили на курган, датований IV ст. до н.е., розташований поблизу Керчі. У гробниці було знайдено поховання царя, цариці і слуги. Найвідоміша знахідка з цього кургану — електровий кубок, тобто велика золота чаша, — зберігається в Державному Ермітажі, як і інші знахідки: зброя та численні золоті прикраси. Деякі знахідки перебувають у російському Історичному музеї. Частину скарбів було розграбовано під час розкопок.
+                  </p>
+                </div>
+                  
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby6.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby6.jpg">
+                <div class="horizontal__item__description desktop-only">
+                  <h3>1830 рік. Куль-Оба</h3>
+                  <p>Одне з найбагатших скіфських поховань, відкрите випадково: російські військові в Криму шукали місця видобутку каменю для будівництва собі житла. І натрапили на курган, датований IV ст. до н.е., розташований поблизу Керчі. У гробниці було знайдено поховання царя, цариці і слуги. Найвідоміша знахідка з цього кургану — електровий кубок, тобто велика золота чаша, — зберігається в Державному Ермітажі, як і інші знахідки: зброя та численні золоті прикраси. Деякі знахідки перебувають у російському Історичному музеї. Частину скарбів було розграбовано під час розкопок.
+                  </p>
+                </div>
+                
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby7.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby7.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1830 рік. Куль-Оба</h3>
+                  <p>Одне з найбагатших скіфських поховань, відкрите випадково: російські військові в Криму шукали місця видобутку каменю для будівництва собі житла. І натрапили на курган, датований IV ст. до н.е., розташований поблизу Керчі. У гробниці було знайдено поховання царя, цариці і слуги. Найвідоміша знахідка з цього кургану — електровий кубок, тобто велика золота чаша, — зберігається в Державному Ермітажі, як і інші знахідки: зброя та численні золоті прикраси. Деякі знахідки перебувають у російському Історичному музеї. Частину скарбів було розграбовано під час розкопок.
+                  </p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby8.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby8.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1855. Олександропільський курган (Лугова могила) </h3>
+                  <p>Один з найбільших “царських” курганів Північного Причорномор’я датований IV–III ст. до н.е. Розташований поблизу села Олександропіль на Дніпропетровщині. Серед знахідок — до 700 золотих прикрас, коштовна збруя для 14 коней, срібний посуд, золоті прикраси для возів, бронзові фігурки, срібний черпак. Скарби перебувають в Ермітажі</p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby9.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby9.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1862. Чортомлик</h3>
+                  <p>Чортомлик і Огуз — дві гробниці скіфських царів.
+                    Чортомлик — великий скіфський курган, датований IV ст. до н.е., розташований за 22 км на північний захід від Нікополя. Його розкопувала експедиція Імператорської Археологічної комісії під керівництвом російського археолога Івана Забєліна, який досліджував також чимало інших курганів у тодішній Катеринославській губернії (сучасна Дніпропетровська область).
+                    Найцінніша знахідка в Чортомлику — срібна ваза-амфора із зображенням скіфів, що приборкують диких коней, — нині перебуває в Ермітажі, як і інші золоті прикраси, знайдені під час розкопок.
+                    </p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby10.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby10.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1867. Цимбалова Могила</h3>
+                  <p>Скіфські кургани Велика і Мала Цимбалка розташовані поблизу села Велика Білозерка Запорізької області, датовані IV ст. до н.е. Серед знахідок членів експедиції Імператорської Археологічної комісії — золоті налобні пластини, прикрашені зміями і грифонами, золота та срібна кінська збруя, навершя стріл, залишки панцирів. Усе це зберігається в російському Ермітажі.
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby11.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby11.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1870-й, 1939-й, 1960-й, 1991-й. Німфей</h3>
+                  <p>Античне місто поблизу Керчі, датоване V ст. до н.е. — поч. IV ст. до н. е. Уперше його почали розкопувати члени Імператорської археологічної комісії, пізніше — з археологічної експедиції Ермітажу.Розкопки тривали в радянський час і тривають досі, після окупації Криму Росією.
+                    Нині в онлайн-колекції Ермітажу є кілька тисяч експонатів, знайдених у Німфеї. Це посуд, статуетки, фрагменти предметів побуту тощо.
+                    </p>
+                </div>
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby12.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby12.jpg">
+                <div class="horizontal__item__description desktop-only">
+                  <h3>1884. Борисфеніда на острові Березань</h3>
+                  <p>На невеликому острові Березань у Чорному морі, неподалік Очакова на Миколаївщині, розташовано унікальний історичний пам’ятник — найдавніше у Північному Причорномор’ї давньогрецьке поселення Борисфеніда, засноване у VII ст. до н.е. Основні знахідки для Березанської археологічної колекції в Ермітажі — понад 6 тис. одиниць (фрагменти посуду, предметів посуду, статуетки) були здобуті на Березані вже в радянський час, коли там діяла археологічна експедиція Ермітажу (починаючи з 1962 року).</p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby13.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby13.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1884. Борисфеніда на острові Березань</h3>
+                  <p>На невеликому острові Березань у Чорному морі, неподалік Очакова на Миколаївщині, розташовано унікальний історичний пам’ятник — найдавніше у Північному Причорномор’ї давньогрецьке поселення Борисфеніда, засноване у VII ст. до н.е. Основні знахідки для Березанської археологічної колекції в Ермітажі — понад 6 тис. одиниць (фрагменти посуду, предметів посуду, статуетки) були здобуті на Березані вже в радянський час, коли там діяла археологічна експедиція Ермітажу (починаючи з 1962 року).</p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby14.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby14.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1888. Вітова могила</h3>
+                  <p>Курган V–VI ст. до н.е., розташований у Полтавській області на лівому березі річки Ворскла, — один з найвідоміших з групи курганів в урочищі Розрита могила. Найцінніші знахідки з цього кургану зберігаються в російському Історичному музеї: золоті бляшки з орнаментом, бронзові наконечники стріл, предмети кінської упряжі. Частину речей повернули в Україну до Харківського історичного музею, але вони безслідно зникли в розбомбленому фашистами ешелоні в 1942 році.
+                    </p>
+                </div>
+              </div>
+              <div class="horizontal__item bordered">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby15.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby15.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1890. Огуз</h3>
+                  <p>Курган поблизу села Нижні Сірогози на Херсонщині — одна з двох скіфських гробниць царів IV ст. до н.е., розташованих на сучасній території України. Його, як і багато інших курганів у Криму та Приазов’ї, досліджував російський археолог Микола Веселовський. Хоча курган було пограбовано значно раніше, йому вдалося там знайти кілька десятків золотих бляшок, гудзиків, уламки списів, срібні персні, бронзові намистини тощо. 
+                    Більшість цінних знахідок з цього кургану потрапили до Ермітажу, але російський уряд не надав коштів для повного дослідження і збереження цієї пам’ятки. Тому курган продовжили розкопувати місцеві жителі й знайдені там цінності “загубилися”. 
+                    </p>
+                </div>
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby17.jpg">
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby17.jpg">
+                <div class="horizontal__item__description ">
+                  <h3>1912 рік. Солоха.</h3>
+                  <p>“Візитівкою” скіфського кургану ІV ст. до н.е. поблизу села Велика Знам’янка на території сучасної Запорізької області України став золотий гребінь. Разом з іншими знахідками (шолом, золоті прикраси) передали до Ермітажу.</p>
+                </div>
+              </div>
+              <div class="horizontal__item">
+                <img class="desktop-only" src="img/horizontal-slider/desktop/skarby18.jpg" >
+                <img class="mobile-only" src="img/horizontal-slider/mobile/skarby18.jpg">
+                <div class="horizontal__item__description">
+                  <h3>1912. Бородінський скарб</h3>
+                  <p>Скарб випадково знайшов німецький колоніст, який розкопав давній курган у пошуках каменю для будівництва. Найвідоміші знахідки — інкрустований золотом срібний кинжал і фібула (застібка для одягу), срібна навершя списів, 4 нефритові інкрустовані золотом сокири, 3 кам’яні булави, 2 бронзові пластини. Загалом скарб налічував 17 предметів, датованих ІІ ст. до н.е. У наукових статтях ідеться про те, що скарб є історичною пам’яткою світового значення, оскільки є зв’язковою ланкою поміж пам’ятками 
+                    бронзового віку Середземномор'я та майже всієї Євразії. Зберігається в російському Історичному музеї в Москві.
+                    </p>
+                </div>
+              </div>
+              <!--<div class="horizontal__item">
+                 <img class="desktop-only" src="img/horizontal-slider/desktop/skarby14.jpg"> 
+                <img class="mobile-only" src="img/horizontal-slider/mobile/final.png">
+                <div class="horizontal__item__description">
+                  <h3>1888. Вітова могила</h3>
+                  <p>Курган V–VI ст. до н.е., розташований у Полтавській області на лівому березі річки Ворскла, — один з найвідоміших з групи курганів в урочищі Розрита могила. Найцінніші знахідки з цього кургану зберігаються в російському Історичному музеї: золоті бляшки з орнаментом, бронзові наконечники стріл, предмети кінської упряжі. Частину речей повернули в Україну до Харківського історичного музею, але вони безслідно зникли в розбомбленому фашистами ешелоні в 1942 році.
+                    </p>
+                </div> -->
+              </div>
+             
+            
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vertical">
+        <h2>Vertical Section</h2>
+
+  
+       
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam placeat ea debitis laudantium officia corrupti expedita adipisci eveniet obcaecati, molestias vitae voluptatum porro totam ut repellat magni ab ratione voluptas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quod aliquid rerum nobis natus fugiat quis, velit in fuga id aut quaerat animi atque est amet dolores itaque, iusto assumenda.</p>
+  
+      
+      </section>
+
+    </div>
+
+
+
+  </div>
+
+  <script>
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const sections = gsap.utils.toArray(".horizontal__item");
+    let maxWidth = 0;
+
+    const getMaxWidth = () => {
+      maxWidth = 0;
+      sections.forEach(section => {
+        maxWidth += section.offsetWidth;
+        maxWidth += gsap.getProperty(section, 'marginLeft');
+      });
+      maxWidth += 20;
+      maxWidth += window.innerWidth;
+      maxWidth -= sections[0].offsetWidth;
+      return maxWidth;
+    };
+
+    getMaxWidth();
+    ScrollTrigger.addEventListener("refreshInit", getMaxWidth);
+
+    gsap.set('section.spacer', { minHeight: window.innerHeight - document.querySelector('.horizontal').offsetHeight });
+
+    gsap.to(sections, {
+      x: () => `-${maxWidth - window.innerWidth}`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal",
+        pin: '.wrapper',
+        scrub: 0.5,
+        markers: false,
+        end: () => `+=${maxWidth}`,
+        invalidateOnRefresh: true
+      }
+    });
+
+
+
+    sections.forEach((sct, i) => {
+      ScrollTrigger.create({
+        trigger: sct,
+        start: () => 'top top-=' + (sct.offsetLeft - window.innerWidth / 2) * (maxWidth / (maxWidth - window.innerWidth)),
+        end: () => '+=' + sct.offsetWidth * (maxWidth / (maxWidth - window.innerWidth)),
+        toggleClass: { targets: sct, className: "active" }
+      });
+
+    });
+  </script>
+
+
+</body>
+
+</html>

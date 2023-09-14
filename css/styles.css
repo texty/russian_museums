@@ -2,22 +2,22 @@
 
 @font-face {
     font-family: "Proxima Nova";
-    src: url('fonts/proxima-nova-regular.eot');
-    src: url('fonts/proxima-nova-regular.eot') format('embedded-opentype'),
-         url('fonts/proxima-nova-regular.woff2') format('woff2'),
-         url('fonts/proxima-nova-regular.woff') format('woff'),
-         url('fonts/proxima-nova-regular.ttf') format('truetype');
+    src: url('../fonts/proxima-nova-regular.eot');
+    src: url('../fonts/proxima-nova-regular.eot') format('embedded-opentype'),
+         url('../fonts/proxima-nova-regular.woff2') format('woff2'),
+         url('../fonts/proxima-nova-regular.woff') format('woff'),
+         url('../fonts/proxima-nova-regular.ttf') format('truetype');
     font-display: swap;
   }
 
   @font-face {
     font-family: "Proxima Nova";
     font-weight: bold;
-    src: url('fonts/proxima-nova-bold.eot');
-    src: url('fonts/proxima-nova-bold.eot') format('embedded-opentype'),
-         url('fonts/proxima-nova-bold.woff2') format('woff2'),
-         url('fonts/proxima-nova-bold.woff') format('woff'),
-         url('fonts/proxima-nova-bold.ttf') format('truetype');
+    src: url('../fonts/proxima-nova-bold.eot');
+    src: url('../fonts/proxima-nova-bold.eot') format('embedded-opentype'),
+         url('../fonts/proxima-nova-bold.woff2') format('woff2'),
+         url('../fonts/proxima-nova-bold.woff') format('woff'),
+         url('../fonts/proxima-nova-bold.ttf') format('truetype');
     font-display: swap;
   }
 
@@ -25,8 +25,8 @@
   @font-face {
     font-family: "Georgia";
     font-weight: normal;
-    src: url('fonts/GEORGIA.TTF');
-    src: url('fonts/GEORGIA.TTF') format('truetype');
+    src: url('../fonts/GEORGIA.TTF');
+    src: url('../fonts/GEORGIA.TTF') format('truetype');
     font-display: swap;
   }
 
@@ -34,8 +34,8 @@
     font-family: "Georgia-Italic";
     font-weight: normal;
     font-style: italic;
-    src: url('fonts/GEORGIAI.TTF');
-    src: url('fonts/GEORGIAI.TTF') format('truetype');
+    src: url('../fonts/GEORGIAI.TTF');
+    src: url('../fonts/GEORGIAI.TTF') format('truetype');
     font-display: swap;
   }
   
@@ -44,8 +44,8 @@
   @font-face {
     font-family: "Georgia-Bold";
     font-weight: bold;
-    src: url('fonts/GEORGIAB.TTF');
-    src: url('fonts/GEORGIAB.TTF') format('truetype');
+    src: url('../fonts/GEORGIAB.TTF');
+    src: url('../fonts/GEORGIAB.TTF') format('truetype');
     font-display: swap;
   }
 
@@ -53,8 +53,8 @@
     font-family: "Georgia-Bold-Italic";
     font-weight: bold;
     font-style: italic;
-    src: url('fonts/GEORGIAZ.TTF');
-    src: url('fonts/GEORGIAZ.TTF') format('truetype');
+    src: url('../fonts/GEORGIAZ.TTF');
+    src: url('../fonts/GEORGIAZ.TTF') format('truetype');
     font-display: swap;
   }
 
@@ -64,8 +64,8 @@
     font-family: "Georgia-Bold-Italic";
     font-weight: bold;
     font-style: italic;
-    src: url('fonts/GEORGIA.TTF');
-    src: url('fonts/GEORGIA.TTF') format('truetype');
+    src: url('../fonts/GEORGIA.TTF');
+    src: url('../fonts/GEORGIA.TTF') format('truetype');
     font-display: swap;
   }
 

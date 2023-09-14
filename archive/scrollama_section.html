@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="libs/jquery-1.11.1.js"></script>
+    <script src="libs/scrollama.min.js"></script>
+</head>
+<body>
+    
+
+
+   
+<style>
+
+
+    #scroll {
+        grid-column: 1/-1;
+        position: relative;
+        width: 100%;
+    }
+
+
+    .scroll__graphic {
+        grid-column: 1/-1;
+        width: 100%;
+        height: 100vh;
+        max-width: 1200px;
+        margin: auto;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        display: flex;
+    }
+
+    .scroll__graphic  img {
+        margin: auto;
+    }
+
+    @media(max-width: 800px){
+        .scroll__graphic {
+            display: block;
+            z-index: 100;
+        }
+    }
+
+   
+    .scroll__text {
+       width: 90%;
+       max-width: 800px;
+        margin: 0 auto;
+        z-index: 100;
+        pointer-events: none;
+         z-index: 1;
+         -webkit-transform: translate3d(0,0,0);
+    }
+
+    .step {
+        padding: 15px;
+        height: max-content;
+        margin-bottom: 80vh;
+        background-color: #D9D2CE;
+    }
+
+    .step div {
+        pointer-events: all;
+        padding: 5px;
+    }
+
+   
+
+    .step p {
+        font-family: 'Proxima Nova', sans-serif;
+        margin: 0;
+        font-size: 25px;
+        line-height:1.4;
+
+    }
+
+    #background-image {
+        width: 100%;
+    }
+
+</style>
+<body>
+ 
+
+
+
+
+<section class="story">
+    <section id='scroll'>
+        <div class='scroll__graphic sticky'>
+            <img id="background-image" src="https://texty.github.io/russian_museums/img/scroll/01.jpg"/>
+        </div>
+
+
+        <div class='scroll__text'>
+            <div class="step">
+                <div>
+                    <p>Тут вказано назву археологічної пам’ятки й колекції, інвентарний номер починається на КО, тобто Куль-Оба. А тепер зверніть увагу на описи інших предметів з такими самими літерами в інвентарному номері.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <p>“Сосуд круглодонный” — це насправді всесвітньо відомий унікальний електровий кубок (електровий — тобто золотий) із зображеннями сцен життя скіфів. Розділи “Археологический памятник” та “Место находки” не заповнено, тому вони не відображаються.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <p>Такі самі букви є також в інвентарних номерах золотих сережок на цьоу фото. Припускаємо, що цифри після букв можуть означати порядковий номер експоната, що походить з певної археологічної пам’ятки. Саме за цим кодом в інвентарному номері ми й відшукали експонати з Куль-Оби в колекції поміж інших.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <p>Схожа закономірність повторюється і щодо інших експонатів та колекцій. Наприклад, золоті сережки, знайдені під час розкопок античного міста Німфей на мисі Ак-Бурун у Криму, поблизу сучасної Керчі. Про походження знахідки свідчить лише назва колекції та інвентарний номер. </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <p>Але тут про походження чітко свідчить хоча б назва колекції. А, наприклад, перстень з Перещепинського скарбу — надзвичайно багатої на коштовності знахідки біля села Мала Перещепина на Полтавщині — ідентифікувати вже важче. Тут не вказано ні місця знахідки, ні археологічної пам’ятки. Але ми також звернули увагу на інвентарний номер: 1930-187.
+                    </p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div>
+                    <p>І знайшли у скачаному онлайн-каталозі експонат з таким самим номером (1930-187), проте з іншим фото, яке нижче. І з цього знімка вже зрозуміло, що це той самий перстень з Перещепинського скарбу з Полтавщини.</p>
+                </div>
+            </div>
+
+       
+  
+                   
+
+        
+        </div>
+    </section>
+</section>
+
+
+
+    <script>
+
+var Images = {
+            0: "https://texty.github.io/russian_museums/img/scroll/01.jpg",
+            1: "https://texty.github.io/russian_museums/img/scroll/02.jpg",
+            2: "https://texty.github.io/russian_museums/img/scroll/03.jpg",
+            3: "https://texty.github.io/russian_museums/img/scroll/04.jpg",
+            4: "https://texty.github.io/russian_museums/img/scroll/05.jpg",
+            5: "https://texty.github.io/russian_museums/img/scroll/06.jpg"
+        }
+        var container = document.querySelector('#scroll');
+        var graphic = document.querySelector('#scroll > .scroll__graphic');
+        var text = document.querySelector('#scroll > .scroll__text');
+        var step = document.querySelector('#scroll > .scroll__text > .step');
+        var scroller = scrollama();
+
+        function handleStepEnter(r) {
+          
+            $('#background-image').attr("src", Images[r.index])
+
+        }
+ 
+        function init() {
+            scroller.setup({
+                container: '#scroll',
+                graphic: '.scroll__graphic',
+                text: '.scroll__text',
+                step: '.scroll__text .step',
+                offset: 0.9,
+                debug: false,
+            })
+                .onStepEnter(handleStepEnter);
+
+        }
+        init();
+
+
+    </script>
+
+
+</body>
+</html>
