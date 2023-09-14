@@ -6823,9 +6823,13 @@
 	<circle class="st26" cx="1257.6" cy="1516.4" r="5.7"/>
 </g>
 <rect x="341.4" y="122.4" class="st27" width="910" height="85.2"/>
-<text transform="matrix(1 0 0 1 378.7459 142.7501)" class="st28 st29">Топ-10 українських локацій за кількістю знахідок в <span fill='red'>Ермітажі<span> i</text>
-<text transform="matrix(1 0 0 1 453.5459 175.1501)" class="st28 st29">топ-12 в </text>
-<text transform="matrix(1 0 0 1 571.4459 175.1501)" class="st24 st29">Державному історичному музеї Росії</text>
+<text transform="matrix(1 0 0 1 378.7459 142.7501)" class="st28 st29">Топ-10 українських локацій за кількістю знахідок в </text>
+<text transform="matrix(1 0 0 1 1045 142.7501)" class="st28 st29" fill='#6d494c'>Ермітажі</text>
+
+<text transform="matrix(1 0 0 1 1190 142.7501)" class="st28 st29">i</text>
+
+<text transform="matrix(1 0 0 1 453.5459 175.1501)" class="st28 st29">топ-12 у </text>
+<text transform="matrix(1 0 0 1 572 175.1501)" class="st24 st29">Державному історичному музеї Росії</text>
 <rect x="41.9" y="1734.9" class="st27" width="1002.9" height="26.5"/>
 <text transform="matrix(1 0 0 1 41.8509 1743.5294)" class="st33 st34 st35">Дані: онлайн-колекція Державного Ермітажу (Санкт-Петербург, Росія) та електронний каталог Державного Історичного музею (Москва, Росія)</text>
 <g>
