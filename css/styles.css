@@ -7,6 +7,7 @@
          url('fonts/proxima-nova-regular.woff2') format('woff2'),
          url('fonts/proxima-nova-regular.woff') format('woff'),
          url('fonts/proxima-nova-regular.ttf') format('truetype');
+    font-display: swap;
   }
 
   @font-face {
@@ -17,27 +18,7 @@
          url('fonts/proxima-nova-bold.woff2') format('woff2'),
          url('fonts/proxima-nova-bold.woff') format('woff'),
          url('fonts/proxima-nova-bold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: "Century Schoolbook";
-    font-weight: normal;
-    src: url('fonts/CENSCBK.TTF');
-    src: url('fonts/CENSCBK.TTF') format('truetype');
-  }
-
-  @font-face {
-    font-family: "Century Schoolbook";
-    font-weight: bold;
-    src: url('fonts/SCHLBKB.TTF');
-    src: url('fonts/SCHLBKB.TTF') format('truetype');
-  }
-
-  @font-face {
-    font-family: "Century Schoolbook";
-    font-style: italic;
-    src: url('fonts/SCHLBKI.TTF');
-    src: url('fonts/SCHLBKI.TTF') format('truetype');
+    font-display: swap;
   }
 
 body {

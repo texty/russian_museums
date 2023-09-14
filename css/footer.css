@@ -37,13 +37,14 @@
 }
 
 #rm-1 {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://texty.org.ua/media/images/slidesnetwork26.original.jpg");
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://texty.org.ua/media/images/mediaglisti.2e16d0ba.fill-1200x630.jpg");
     background-size: cover;
 }
 
 #rm-2 {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("https://texty.org.ua/media/images/cover2_YHGNU8A.original.jpg") ;
     background-size: cover;
+    background-position: 50%;
 }
 
 #rm-3 {
