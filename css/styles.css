@@ -56,6 +56,17 @@ h3#subtitle {
     max-width: 850px;
 }
 
+main a {
+    border-bottom: 2px solid #7F200C;
+    padding-bottom: 1px;
+    text-decoration: none;
+    color: inherit;
+}
+
+main a:hover {
+    color: #7F200C;
+}
+
 main > h2 {
     font-size: calc(18px + 0.5vw);
     font-family: "Georgia", serif;
