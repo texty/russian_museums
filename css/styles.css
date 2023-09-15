@@ -170,7 +170,7 @@ main li {
 }
 
 .qoute {
-    font-family: "Georgia", serif;
+    font-family: "Georgia-Italic", serif;
     font-style: italic;
     color: #7F200C;
 }
@@ -236,7 +236,7 @@ img.medium {
 .scale p {
     font-style: italic;
     color: #7F200C;
-    font-family: 'Georgia', serif;
+    font-family: 'Georgia-Italic', serif;
 }
 
 @media(max-width: 900px){
