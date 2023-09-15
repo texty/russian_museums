@@ -95,7 +95,7 @@ h1#title {
     text-align: center;
     font-size: calc(45px + 2vw);
     font-family: "Georgia", serif;
-    margin: 0 auto;
+    margin: 0px auto 10px;
 }
 
 h3#subtitle {
@@ -194,10 +194,10 @@ main li {
 
 .styled-quote {
     max-width: 600px; 
-    font-family: 'Georgia', serif; 
+    font-family: 'Georgia-Italic', serif; 
     font-style:italic;
-     margin: auto;
-     line-height: 1.4;
+    margin: auto;
+    line-height: 1.4;
 }
 
 .qoute-source {
