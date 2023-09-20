@@ -18,6 +18,8 @@
     grid-template-columns: repeat(18, 100vw);
 }
 
+
+
 .horizontal__item {
     box-sizing: border-box;
 }
@@ -28,7 +30,8 @@
 }
 
 .horizontal__item img.mobile-only {
-    height: 90vh;
+    /* height: 90vh; */
+    width: 90vw;
 }
 
 .horizontal__item h3 {
@@ -56,12 +59,17 @@
 
 @media(max-width: 800px) {
 
+    .horizontal {
+        padding:0;
+    }
+
+
     .horizontal__list {
-        display: flex;
+        display: block;
     }
 
     .horizontal__item {
-        display: flex;
+        display: block;
     }
 
     .horizontal__item__description {
@@ -71,7 +79,8 @@
     }
 
     .bordered {
-        border-right: 1px solid grey;
+        padding-bottom: 30px;
+        border-bottom: 1px solid grey;
     }
 
 
