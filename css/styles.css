@@ -299,12 +299,16 @@ img.medium {
 
   .donate-us {
     font-family: sans-serif;
-    margin: 80px auto 30px auto;
+    margin: 50px auto;
     max-width: 700px;
     width: 90%;
     font-family: 'Proxima Nova', sans-serif;
     display: flex;
     align-items: center;
+  }
+
+  .donate-us p {
+    font-size: 16px;
   }
 
 
