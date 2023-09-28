@@ -109,7 +109,7 @@ h3#subtitle {
     
 }
 
-main a {
+main a, a.switch-lang {
     border-bottom: 2px solid #7F200C;
     padding-bottom: 1px;
     text-decoration: none;

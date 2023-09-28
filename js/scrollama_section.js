@@ -1,10 +1,10 @@
 var Images = {
-    0: "img/scroll/01.jpg",
-    1: "img/scroll/02.jpg",
-    2: "img/scroll/03.jpg",
-    3: "img/scroll/04.jpg",
-    4: "img/scroll/05.jpg",
-    5: "img/scroll/06.jpg"
+    0: "https://texty.github.io/russian_museums/img/scroll/01.jpg",
+    1: "https://texty.github.io/russian_museums/img/scroll/02.jpg",
+    2: "https://texty.github.io/russian_museums/img/scroll/03.jpg",
+    3: "https://texty.github.io/russian_museums/img/scroll/04.jpg",
+    4: "https://texty.github.io/russian_museums/img/scroll/05.jpg",
+    5: "https://texty.github.io/russian_museums/img/scroll/06.jpg"
 }
 var container = document.querySelector('#scroll');
 var graphic = document.querySelector('#scroll > .scroll__graphic');
